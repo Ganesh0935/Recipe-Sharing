@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Sharing Platform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('bg.jpg') no-repeat center center fixed; /* Background image */
+            background-size: cover;
+            position: relative;
+        }
+
+        /* Opacity effect for background image */
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Black overlay with opacity */
+            z-index: -1;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: rgba(255, 107, 107, 0.8);
+            color: white;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar .menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .navbar .menu a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar .menu .chatbot-icon {
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 0;
+            padding: 10px; /* Reduced padding */
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 10px 10px; /* Reduced padding */
+            margin-top: -10px; /* Reduced margin */
+        }
+
+        .card-container {
+            perspective: 1000px;
+            margin: 20px;
+        }
+
+        .card {
+            width: 300px;
+            height: 200px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform-style: preserve-3d;
+            transition: transform 0.8s ease-in-out;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: rotateY(180deg);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .card .card-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            border-radius: 10px;
+            transform: rotateY(180deg);
+            text-align: center;
+        }
+
+        .card .card-front,
+        .card .card-back {
+            position: absolute;
+            backface-visibility: hidden;
+        }
+
+        .card-back .click-here {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 15px;
+            background: #ff6b6b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .card-back .click-here:hover {
+            background: #ff4b4b;
+        }
+
+        .card-back .image-name {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .modal button {
+            padding: 10px 20px;
+            background: #ff6b6b;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        function showModal(type) {
+            document.getElementById(type + '-modal').style.display = 'block';
+        }
+
+        function closeModal(type) {
+            document.getElementById(type + '-modal').style.display = 'none';
+        }
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo-1.jpg" alt="Logo">
+            Recipe Share
+        </div>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="#">Contact</a>
+            <a href="#" onclick="showModal('signup')">Sign Up</a>
+            <a href="javascript:void(0);" onclick="checkLogin()">Submit Recipe</a>
+            <a href="#" onclick="showModal('login')">Login</a>
+            <i class="fas fa-comments chatbot-icon" onclick="showModal('chatbot')"></i>
+        </div>
+    </nav>
+    <section class="hero">
+        <h1>Welcome to the Best Recipe Sharing Platform!</h1>
+    </section>
+    <section class="gallery">
+        <!-- Correct Order: Breakfast, Lunch, Dinner -->
+        <div class="card-container">
+            <div class="card">
+                <div class="card-front">
+                    <img src="breakfast.jpg" alt="Food 1">
+                </div>
+                <div class="card-back">
+                    <div class="image-name">Breakfast Recipes</div>
+                    <a href="https://example.com" target="_self" class="click-here">Click Here</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <div class="card-front">
+                    <img src="food.jpg" alt="Food 2">
+                </div>
+                <div class="card-back">
+                    <div class="image-name">Lunch Recipes</div>
+                    <a href="https://example.com" target="_self" class="click-here">Click Here</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <div class="card-front">
+                    <img src="dinner.jpg" alt="Food 3">
+                </div>
+                <div class="card-back">
+                    <div class="image-name">Dinner Recipes</div>
+                    <a href="https://example.com" target="_self" class="click-here">Click Here</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="login-modal" class="modal">
+        <h2>Login</h2>
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <button onclick="closeModal('login')">Login</button>
+    </div>
+
+    <div id="signup-modal" class="modal">
+        <h2>Sign Up</h2>
+        <input type="text" placeholder="Username" required>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <button onclick="closeModal('signup')">Sign Up</button>
+    </div>
+
+    <div id="chatbot-modal" class="modal">
+        <h2>Chatbot</h2>
+        <p>How can I assist you?</p>
+        <input type="text" placeholder="Type your message...">
+        <button onclick="closeModal('chatbot')">Close</button>
+    </div>
+</body>
+</html>
