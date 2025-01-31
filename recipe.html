@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Category</title>
+    
+    <!-- Bootstrap 5 CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* Page Styling */
+        .recipe-list {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .card {
+            margin-bottom: 1.5rem;
+        }
+
+        .card img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .back-btn {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        footer a {
+            color: #ff5722;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container recipe-list">
+        <h2 id="categoryTitle">Recipes for <span></span></h2>
+
+        <div id="recipeGrid" class="row">
+            <!-- Recipes will be dynamically added here -->
+        </div>
+
+        <!-- Back to Home Button AFTER recipe list -->
+        <button class="btn btn-primary back-btn" onclick="goHome()">Back to Home</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Recipe Share. Made with ❤️ for food enthusiasts. <a href="#">Contact Us</a></p>
+    </footer>
+
+    <script>
+        const recipesData = {
+            breakfast: [
+                { name: "Pancakes", description: "Fluffy and delicious pancakes.", image: "pan cake.jpg" },
+                { name: "Omelette", description: "A quick and tasty omelette.", image: "omelette.jpg" }
+            ],
+            lunch: [
+                { name: "Grilled Chicken", description: "Tender and juicy grilled chicken.", image: "grilled.jpg" },
+                { name: "Caesar Salad", description: "Fresh and crunchy Caesar salad.", image: "caesar.jpg" }
+            ],
+            dinner: [
+                { name: "Spaghetti Bolognese", description: "Rich and savory spaghetti.", image: "Spaghetti Bolognese.jpg" },
+                { name: "Steak", description: "Grilled steak with mashed potatoes.", image: "steak.jpg" }
+            ],
+            cakes: [
+                { name: "Chocolate Cake", description: "Rich and decadent chocolate cake.", image: "chocolate.jpg" },
+                { name: "Vanilla Cake", description: "Classic vanilla cake with frosting.", image: "vanilla.jpg" }
+            ],
+            icecream: [
+                { name: "Chocolate Ice Cream", description: "Creamy chocolate ice cream.", image: "chocolate icecream.jpg" },
+                { name: "Strawberry Ice Cream", description: "Sweet and tangy strawberry ice cream.", image: "strawberry_icecream.jpg" }
+            ],
+            appetizers: [
+                { name: "Spring Rolls", description: "Crispy and delicious spring rolls.", image: "spring_rolls.jpg" },
+                { name: "Bruschetta", description: "Tasty bruschetta with tomatoes and basil.", image: "bruschetta.jpg" }
+            ]
+        };
+
+        // Get the category from the URL query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category');
+
+        // Set the category title
+        document.getElementById('categoryTitle').querySelector('span').textContent = category.charAt(0).toUpperCase() + category.slice(1);
+
+        // Load recipes based on the category
+        const recipes = recipesData[category];
+        const recipeGrid = document.getElementById('recipeGrid');
+        recipeGrid.innerHTML = '';
+
+        recipes.forEach(recipe => {
+            const recipeCard = document.createElement('div');
+            recipeCard.classList.add('col-md-4');
+            recipeCard.innerHTML = `
+                <div class="card">
+                    <img src="${recipe.image}" class="card-img-top" alt="${recipe.name}">
+                    <div class="card-body">
+                        <h5 class="card-title">${recipe.name}</h5>
+                        <p class="card-text">${recipe.description}</p>
+                    </div>
+                </div>
+            `;
+            recipeGrid.appendChild(recipeCard);
+        });
+
+        // Function to go back to home page
+        function goHome() {
+            window.location.href = "index.html";
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
