@@ -1,130 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Category</title>
-    
-    <!-- Bootstrap 5 CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-        }
-
-        /* Page Styling */
-        .recipe-list {
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .card {
-            margin-bottom: 1.5rem;
-        }
-
-        .card img {
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .back-btn {
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem 0;
-        }
-
-        footer a {
-            color: #ff5722;
-            text-decoration: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f9f9f9;
+    }
+    .container {
+      max-width: 300px;
+      margin: 50px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    h1 {
+      color: #f89520;
+    }
+    p {
+      color: #555;
+    }
+    .back-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .back-btn:hover {
+      background-color: #555;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <img id="recipe-img" src="" alt="Recipe Image">
+    <h1 id="recipe-title"></h1>
+    <p id="recipe-desc"></p>
+    <h3>Steps:</h3>
+    <p id="recipe-steps"></p>
+    <h3>Nutrition Facts:</h3>
+    <p id="recipe-nutrition"></p>
+    <a href="home.html" class="back-btn">Back to Recipes</a>
+  </div>
 
-    <div class="container recipe-list">
-        <h2 id="categoryTitle">Recipes for <span></span></h2>
+  <script>
+    const recipes = {
+      "Biriyani": { img: "biryani.jpg", desc: "Aromatic rice with spices and meat.", steps: "Marinate, cook rice, layer, serve.", nutrition: "Calories: 600, Protein: 25g, Carbs: 70g, Fat: 20g" },
+      "Chicken Curry": { img: "chicken_curry.jpg", desc: "Spicy and flavorful Indian chicken curry.", steps: "Cook chicken with spices, simmer, serve.", nutrition: "Calories: 400, Protein: 30g, Carbs: 10g, Fat: 25g" },
+      "Mutton": { img: "mutton.jpg", desc: "Slow-cooked tender mutton curry.", steps: "Marinate, slow cook, serve hot.", nutrition: "Calories: 500, Protein: 35g, Carbs: 5g, Fat: 30g" },
+      "Sambar": { img: "sambar.webp", desc: "South Indian lentil-based stew.", steps: "Cook lentils, add veggies & tamarind.", nutrition: "Calories: 150, Protein: 8g, Carbs: 25g, Fat: 2g" },
+      "Omelette": { img: "omelette.jpg", desc: "Simple egg dish with spices.", steps: "Beat eggs, fry in pan, serve.", nutrition: "Calories: 220, Protein: 14g, Carbs: 3g, Fat: 15g" },
+      "Dosa": { img: "dosa.jpg", desc: "Crispy South Indian rice crepe.", steps: "Make batter, spread on pan, cook.", nutrition: "Calories: 180, Protein: 5g, Carbs: 30g, Fat: 4g" },
+      "Idly": { img: "idly.jpg", desc: "Steamed rice cake, soft & fluffy.", steps: "Ferment batter, steam, serve.", nutrition: "Calories: 100, Protein: 4g, Carbs: 22g, Fat: 1g" },
+      "Ice Cream": { img: "ice cream.jpg", desc: "Creamy frozen dessert.", steps: "Mix ingredients, freeze, serve.", nutrition: "Calories: 250, Protein: 4g, Carbs: 30g, Fat: 12g" },
+      "Potato Fry": { img: "potato_fry.jpg", desc: "Crispy spiced potato dish.", steps: "Slice potatoes, fry with spices.", nutrition: "Calories: 300, Protein: 5g, Carbs: 40g, Fat: 15g" },
+      "Pulihora": { img: "pulihora.webp", desc: "Tangy tamarind rice with spices.", steps: "Cook rice, prepare tamarind mix, combine.", nutrition: "Calories: 350, Protein: 6g, Carbs: 60g, Fat: 8g" },
+      "Chocolate Cake": { img: "chocolatecake.jpg", desc: "Rich and moist chocolate cake.", steps: "Mix ingredients, bake, cool, serve.", nutrition: "Calories: 320, Protein: 6g, Carbs: 45g, Fat: 12g" },
+      "Red Velvet Cake": { img: "Red_velvet_cake.webp", desc: "Soft and delicious red velvet cake.", steps: "Mix, bake, frost, serve.", nutrition: "Calories: 350, Protein: 7g, Carbs: 50g, Fat: 14g" },
+      "Egg Bhurji": { img: "egg_bhurji.jpg", desc: "Spicy scrambled eggs.", steps: "Scramble eggs with spices, serve.", nutrition: "Calories: 250, Protein: 15g, Carbs: 5g, Fat: 18g" },
+      "Black Current Icecream": { img: "black_current_icecream.jpg", desc: "Creamy ice cream with blackcurrant flavor.", steps: "Blend, freeze, serve.", nutrition: "Calories: 270, Protein: 5g, Carbs: 35g, Fat: 10g" },
+      "Chicken Fry": { img: "chicken_fry.jpg", desc: "Crispy fried chicken.", steps: "Marinate, fry till golden brown.", nutrition: "Calories: 450, Protein: 35g, Carbs: 15g, Fat: 25g" },
+      "Mandi Biriyani": { img: "mandi_biriyani.jpg", desc: "Arabic-style slow-cooked biriyani.", steps: "Marinate, slow cook with rice, serve.", nutrition: "Calories: 700, Protein: 30g, Carbs: 80g, Fat: 25g" },
+      "Mutton Biriyani": { img: "mutton_biriyani.jpg", desc: "Flavorful mutton rice dish.", steps: "Marinate, cook rice, combine.", nutrition: "Calories: 650, Protein: 40g, Carbs: 75g, Fat: 22g" },
+      "Prawns": { img: "prawns.jpg", desc: "Spicy and juicy prawn dish.", steps: "Marinate, cook with spices.", nutrition: "Calories: 300, Protein: 25g, Carbs: 5g, Fat: 10g" },
+      "Fish Curry": { img: "fish_curry.jpg", desc: "Tangy and spicy fish curry.", steps: "Marinate fish, cook in gravy.", nutrition: "Calories: 350, Protein: 40g, Carbs: 10g, Fat: 15g" },
+      "Fish Fry": { img: "fish_fry.jpg", desc: "Crispy fried fish with spices.", steps: "Coat fish, fry till golden.", nutrition: "Calories: 300, Protein: 30g, Carbs: 5g, Fat: 20g" }
+    };
 
-        <div id="recipeGrid" class="row">
-            <!-- Recipes will be dynamically added here -->
-        </div>
-
-        <!-- Back to Home Button AFTER recipe list -->
-        <button class="btn btn-primary back-btn" onclick="goHome()">Back to Home</button>
-    </div>
-
-    <footer>
-        <p>&copy; 2025 Recipe Share. Made with ❤️ for food enthusiasts. <a href="#">Contact Us</a></p>
-    </footer>
-
-    <script>
-        const recipesData = {
-            breakfast: [
-                { name: "Pancakes", description: "Fluffy and delicious pancakes.", image: "pan cake.jpg" },
-                { name: "Omelette", description: "A quick and tasty omelette.", image: "omelette.jpg" }
-            ],
-            lunch: [
-                { name: "Grilled Chicken", description: "Tender and juicy grilled chicken.", image: "grilled.jpg" },
-                { name: "Caesar Salad", description: "Fresh and crunchy Caesar salad.", image: "caesar.jpg" }
-            ],
-            dinner: [
-                { name: "Spaghetti Bolognese", description: "Rich and savory spaghetti.", image: "Spaghetti Bolognese.jpg" },
-                { name: "Steak", description: "Grilled steak with mashed potatoes.", image: "steak.jpg" }
-            ],
-            cakes: [
-                { name: "Chocolate Cake", description: "Rich and decadent chocolate cake.", image: "chocolate.jpg" },
-                { name: "Vanilla Cake", description: "Classic vanilla cake with frosting.", image: "vanilla.jpg" }
-            ],
-            icecream: [
-                { name: "Chocolate Ice Cream", description: "Creamy chocolate ice cream.", image: "chocolate icecream.jpg" },
-                { name: "Strawberry Ice Cream", description: "Sweet and tangy strawberry ice cream.", image: "strawberry_icecream.jpg" }
-            ],
-            appetizers: [
-                { name: "Spring Rolls", description: "Crispy and delicious spring rolls.", image: "spring_rolls.jpg" },
-                { name: "Bruschetta", description: "Tasty bruschetta with tomatoes and basil.", image: "bruschetta.jpg" }
-            ]
-        };
-
-        // Get the category from the URL query parameter
-        const urlParams = new URLSearchParams(window.location.search);
-        const category = urlParams.get('category');
-
-        // Set the category title
-        document.getElementById('categoryTitle').querySelector('span').textContent = category.charAt(0).toUpperCase() + category.slice(1);
-
-        // Load recipes based on the category
-        const recipes = recipesData[category];
-        const recipeGrid = document.getElementById('recipeGrid');
-        recipeGrid.innerHTML = '';
-
-        recipes.forEach(recipe => {
-            const recipeCard = document.createElement('div');
-            recipeCard.classList.add('col-md-4');
-            recipeCard.innerHTML = `
-                <div class="card">
-                    <img src="${recipe.image}" class="card-img-top" alt="${recipe.name}">
-                    <div class="card-body">
-                        <h5 class="card-title">${recipe.name}</h5>
-                        <p class="card-text">${recipe.description}</p>
-                    </div>
-                </div>
-            `;
-            recipeGrid.appendChild(recipeCard);
-        });
-
-        // Function to go back to home page
-        function goHome() {
-            window.location.href = "index.html";
-        }
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    const params = new URLSearchParams(window.location.search);
+    const recipeName = params.get("recipe");
+    if (recipes[recipeName]) {
+      document.getElementById("recipe-img").src = recipes[recipeName].img;
+      document.getElementById("recipe-title").textContent = recipeName;
+      document.getElementById("recipe-desc").textContent = recipes[recipeName].desc;
+      document.getElementById("recipe-steps").textContent = recipes[recipeName].steps;
+      document.getElementById("recipe-nutrition").textContent = recipes[recipeName].nutrition;
+    }
+  </script>
 </body>
 </html>
