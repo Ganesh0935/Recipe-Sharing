@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlavourBot</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/home.css">
+    <link rel="stylesheet" href="../CSS/chatbot.css">
+    <link rel="stylesheet" href="../CSS/dynamic.css">
+    <link rel="icon" href="../Assets/logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="topnav">
+        <img src="../Assets/logo.jpg">
+        <a id="home" href="home.html">Home</a>
+        <a class="active" href="upload.html">Upload</a>
+        <a href="recipe_display.html">Recipes</a>
+        <a href="#">ChatBot</a>
+        <a id="authButton" href="login.html">Login</a>
+    </div>
+
+    <h1 class="chat-heading">FlavourBot</h1>
+    <div id="chat-container">
+        <div id="chat-log"></div>
+        <div id="input-container">
+            <input type="text" id="user-input" placeholder="Ask FlavourBot a question..." />
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <script src="/Scripts/chatbot.js" type="text/javascript"></script>
+    <script src="/Scripts/authButton.js" type="text/javascript"></script>
+    <script src="../Scripts/home.js" type="text/javascript"></script>
+</body>
+</html>
