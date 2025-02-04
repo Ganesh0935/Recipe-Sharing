@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes - Flavour Fusion</title>
+    <link rel="stylesheet" href="../CSS/home.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/recipe_display.css">
+    <link rel="stylesheet" href="../CSS/dynamic.css">
+    <link rel="icon" href="../Assets/logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="topnav">
+        <img src="../Assets/logo.jpg">
+        <a id="home" href="home.html">Home</a>
+        <a href="upload.html">Upload</a>
+        <a href="recipe_display.html">Recipes</a>
+        <a href="chatbot.html">ChatBot</a>
+        <a id="authButton" href="login.html">Login</a>
+    </div>
+
+    <section class="recipe-container">
+        <h1>Discover & Share Delicious Recipes</h1>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Search for recipes...">
+            <button id="search-btn" onclick="filterRecipes()">Search</button>
+        </div>
+
+        <!-- Recipe Grid -->
+        <div class="recipe-grid" id="recipe-list"></div>
+    </section>
+
+    <script>
+        const recipes = [
+            { name: "Biriyani", img: "../Assets/biryani.jpg" },
+            { name: "Chicken Curry", img: "../Assets/chicken_curry.jpg" },
+            { name: "Mutton", img: "../Assets/mutton.jpg" },
+            { name: "Sambar", img: "../Assets/sambar.webp" },
+            { name: "Omelette", img: "../Assets/omelette.jpg" },
+            { name: "Dosa", img: "../Assets/dosa.jpg" },
+            { name: "Idly", img: "../Assets/idly.jpg" },
+            { name: "Ice Cream", img: "../Assets/ice cream.jpg" },
+            { name: "Potato Fry", img: "../Assets/potato_fry.jpg" },
+            { name: "Pulihora", img: "../Assets/pulihora.webp" },
+            { name: "Chocolate Cake", img: "../Assets/chocolatecake.jpg" },
+            { name: "Red Velvet Cake", img: "../Assets/Red_velvet_cake.webp" },
+            { name: "Egg Bhurji", img: "../Assets/egg_bhurji.jpg" },
+            { name: "Black Current Icecream", img: "../Assets/black_current_icecream.jpg" },
+            { name: "Chicken Fry", img: "../Assets/chicken_fry.jpg" },
+            { name: "Mandi Biriyani", img: "../Assets/mandi_biriyani.jpg" },
+            { name: "Mutton Biriyani", img: "../Assets/mutton_biriyani.jpg" },
+            { name: "Prawns", img: "../Assets/prawns.jpg" },
+            { name: "Fish Curry", img: "../Assets/fish_curry.jpg" },
+            { name: "Fish Fry", img: "../Assets/fish_fry.jpg" }
+        ];
+
+        function displayRecipes(filteredRecipes = recipes) {
+            const container = document.getElementById("recipe-list");
+            container.innerHTML = ""; // Clear previous results
+
+            if (filteredRecipes.length === 0) {
+                container.innerHTML = `<p class="no-results">No recipes found.</p>`;
+                return;
+            }
+
+            filteredRecipes.forEach(recipe => {
+                const card = document.createElement("div");
+                card.classList.add("recipe-card");
+                card.innerHTML = `
+                    <img src="${recipe.img}" alt="${recipe.name}">
+                    <h3>${recipe.name}</h3>
+                    <a href="recipe-detail.html?recipe=${encodeURIComponent(recipe.name)}" class="view-recipe">View Recipe</a>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterRecipes() {
+            const searchBar = document.getElementById("search-bar").value.toLowerCase().trim();
+            
+            // If search bar is empty, show all recipes
+            if (searchBar === "") {
+                displayRecipes(recipes);
+                return;
+            }
+
+            const filteredRecipes = recipes.filter(recipe => recipe.name.toLowerCase().includes(searchBar));
+            displayRecipes(filteredRecipes);
+        }
+
+        // Display all recipes on page load
+        displayRecipes();
+    </script>
+    <script src="../Scripts/home.js" type="text/javascript"></script>
+</body>
+</html>
