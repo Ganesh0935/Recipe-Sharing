@@ -1,184 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recipe Search</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
-    }
-    .hero {
-      text-align: center;
-      padding: 50px 20px;
-      background-color: #f89520;
-      color: white;
-    }
-    .hero h1 {
-      font-size: 36px;
-    }
-    .search-container {
-      text-align: center;
-      margin: 20px 0;
-    }
-    .search-container input {
-      width: 250px;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-    .search-container button {
-      padding: 10px 15px;
-      border: none;
-      background-color: gray;
-      color: white;
-      font-size: 16px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-left: 5px;
-    }
-    .search-container button:hover {
-      background-color: #e0801a;
-    }
-    .recipe-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 20px;
-    }
-    .recipe-card {
-      position: relative;
-      background-color: white;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      width: 250px;
-      margin: 10px;
-      text-align: center;
-      padding: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .recipe-card img {
-      width: 100%;
-      height: 150px;
-      border-radius: 10px;
-      object-fit: cover;
-    }
-    .favorite-icon {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 24px;
-      cursor: pointer;
-      color: #ccc;
-      transition: color 0.3s ease;
-    }
-    .favorite-icon.favorited {
-      color: red;
-    }
-    .view-recipe {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 8px 15px;
-      background-color: #f89520;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-    .view-recipe:hover {
-      background-color: #e0801a;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - FlavourSync</title>
+    <link rel="icon" href="../Assets/logo.jpg">
+    <link rel="stylesheet" href="../CSS/home.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/dynamic.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-  <header class="hero">
-    <h1>Discover & Share Delicious Recipes</h1>
-  </header>
+    <!-- Navbar -->
+    <div class="topnav">
+        <img src="../Assets/logo.jpg" alt="Logo">
+        <a class="active" href="home.html" id="home">Home</a>
+        <a href="upload.html">Upload</a>
+        <a href="recipe_display.html">Recipes</a>
+        <a href="chatbot.html"><i class="fas fa-comments chatbot-icon"></i> ChatBot</a>
+        <a id="authButton" href="login.html">Login</a>
+    </div>
 
-  <div class="search-container">
-    <input type="text" id="searchBar" placeholder="Search recipes..." onkeyup="filterRecipesOnEnter(event)">
-    <button onclick="filterRecipes()">Search</button>
-  </div>
-  
-  <section class="recipe-container" id="recipeContainer"></section>
+    <!-- Main Content Section -->
+    <div class="main-content">
+        <!-- Left Section with Carousel -->
+        <div class="carousel-section">
+            <div class="carousel">
+                <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+                <div class="carousel-images">
+                    <img src="../Assets/image4.jpg" alt="Recipe 1" class="carousel-image">
+                    <img src="../Assets/image2.jpg" alt="Recipe 2" class="carousel-image">
+                    <img src="../Assets/image3.jpg" alt="Recipe 3" class="carousel-image">
+                </div>
+                <button class="next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+        </div>
 
-  <script>
-    const recipes = [
-      { name: "Biriyani", img: "biryani.jpg" },
-      { name: "Chicken Curry", img: "chicken_curry.jpg" },
-      { name: "Mutton", img: "mutton.jpg" },
-      { name: "Sambar", img: "sambar.webp" },
-      { name: "Omelette", img: "omelette.jpg" },
-      { name: "Dosa", img: "dosa.jpg" },
-      { name: "Idly", img: "idly.jpg" },
-      { name: "Ice Cream", img: "ice cream.jpg" },
-      { name: "Potato Fry", img: "potato_fry.jpg" },
-      { name: "Pulihora", img: "pulihora.webp" },
-      { name: "Chocolate Cake", img: "chocolatecake.jpg" },
-      { name: "Red Velvet Cake", img: "Red_velvet_cake.webp" },
-      { name: "Egg Bhurji", img: "egg_bhurji.jpg" },
-      { name: "Black Current Icecream", img: "black_current_icecream.jpg" },
-      { name: "Chicken Fry", img: "chicken_fry.jpg" },
-      { name: "Mandi Biriyani", img: "mandi_biriyani.jpg" },
-      { name: "Mutton Biriyani", img: "mutton_biriyani.jpg" },
-      { name: "Prawns", img: "prawns.jpg" },
-      { name: "Fish Curry", img: "fishcurry.jpg" },
-      { name: "Fish Fry", img: "fish_fry.jpg" }
-    ];
+        <!-- Right Section with Text and Animation -->
+        <div class="text-section">
+            <h2 class="text-animation">Welcome to FlavourSync!</h2>
+            <p class="text-animation">
+                Share your favorite recipes with the world. Connect with food lovers and explore a variety of delicious dishes.
+                Join our community of passionate chefs today!
+            </p>
+        </div>
+    </div>
 
-    function displayRecipes(filteredRecipes) {
-      const container = document.getElementById('recipeContainer');
-      container.innerHTML = "";
-      const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 FlavourSync | All Rights Reserved</p>
+    </footer>
 
-      filteredRecipes.forEach(recipe => {
-        const isFavorite = favorites.includes(recipe.name) ? "favorited" : "";
-        const heartIcon = favorites.includes(recipe.name) ? "♥" : "♡";
-        const recipeCard = `
-          <div class="recipe-card">
-            <span class="favorite-icon ${isFavorite}" onclick="toggleFavorite('${recipe.name}', this)">${heartIcon}</span>
-            <img src="${recipe.img}" alt="${recipe.name}">
-            <h3>${recipe.name}</h3>
-            <a href="recipe.html?recipe=${encodeURIComponent(recipe.name)}" class="view-recipe">View Recipe</a>
-          </div>
-        `;
-        container.innerHTML += recipeCard;
-      });
-    }
-
-    function toggleFavorite(recipeName, element) {
-      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-
-      if (favorites.includes(recipeName)) {
-        favorites = favorites.filter(name => name !== recipeName);
-        element.classList.remove("fav_orited");
-        element.innerHTML = "♡";
-      } else {
-        favorites.push(recipeName);
-        element.classList.add("favorited");
-        element.innerHTML = "♥";
-      }
-
-      localStorage.setItem("favorites", JSON.stringify(favorites));
-    }
-
-    function filterRecipes() {
-      const searchValue = document.getElementById('searchBar').value.toLowerCase();
-      const filteredRecipes = recipes.filter(recipe => recipe.name.toLowerCase().includes(searchValue));
-      displayRecipes(filteredRecipes);
-    }
-
-    function filterRecipesOnEnter(event) {
-      if (event.key === "Enter") {
-        filterRecipes();
-      }
-    }
-
-    // Initial Display of Recipes
-    displayRecipes(recipes);
-  </script>
+    <script src="../Scripts/home.js"></script>
+    <script src="../Scripts/authButton.js"></script>
 </body>
 </html>
