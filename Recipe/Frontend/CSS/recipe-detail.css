@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 300px;
+    margin: 50px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+h1 {
+    color: #f89520;
+}
+
+p {
+    color: #555;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.back-btn:hover {
+    background-color: #555;
+}
+
+/* Navbar */
+.topnav {
+    background-color: #f89520;  /* Navbar background color */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.topnav img {
+    height: 60px;  /* Fixed height for the logo */
+    width: auto;   /* Auto width to maintain aspect ratio */
+    margin-right: 20px;
+}
+
+.topnav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 2rem;
+    display: inline-block;
+}
+
+.topnav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* For mobile screens */
+@media (max-width: 768px) {
+    .topnav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .topnav img {
+        margin-bottom: 10px;
+        height: 35px;  /* Slightly reduce height on mobile */
+    }
+
+    .topnav a {
+        padding: 12px;
+        font-size: 16px;
+        width: 100%;
+    }
+}
