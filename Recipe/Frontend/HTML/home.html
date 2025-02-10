@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/20c5629a29.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/20c5629a29.js" crossorigin="anonymous"></script>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - FlavourSync</title>
+    <link rel="icon" href="C:\Users\vardh\OneDrive\Desktop\Project\frontend\Asserts\logo.jpg" />
+    <link rel="stylesheet" href="C:\Users\vardh\OneDrive\Desktop\Project\frontend\CSS\home.css" />
+    <link rel="stylesheet" href="C:\Users\vardh\OneDrive\Desktop\Project\frontend\CSS\styles.css" />
+    <link rel="stylesheet" href="C:\Users\vardh\OneDrive\Desktop\Project\restaurent.css"/>
+    <link rel="stylesheet" href="C:\Users\vardh\OneDrive\Desktop\Project\frontend\CSS\dynamic.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f8f8f8;
+      }
+      .categories {
+        padding: 3rem 2rem;
+        background: linear-gradient(135deg, #f6d365, #fda085);
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 2rem 0;
+        color: white;
+        text-align: center;
+    }
+
+    .categories-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin: 0 auto;
+    }
+
+    .category-card {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 1rem;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        color: #333;
+    }
+
+    .category-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .category-card img {
+        max-width: 100%;
+        height: 140px;
+        border-radius: 12px;
+        object-fit: cover;
+    }
+    
+      .container1 {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 50px;
+          max-width: 1500px;
+          margin-top:40px;
+          background: white;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+          border-radius: 10px;
+      }
+      .image-container {
+          flex: 1;
+          text-align: center;
+      }
+      .image-container img {
+          width: 100%;
+          max-width: 500px;
+          border-radius: 10px;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      }
+      .content {
+          flex: 1;
+          padding: 20px;
+      }
+      h2 {
+          color: #333;
+          font-size: 32px;
+      }
+      h3 {
+          color: #555;
+          font-size: 24px;
+          margin-top: 20px;
+      }
+      nav {
+            background-color: #333;
+            padding: 0.5rem;
+        }
+      nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: left;
+        }
+        
+        nav ul li {
+            display: inline;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+      .food{
+        border-radius:20px;
+        width: 80px;
+        height: 70px;
+      }
+      .carousel slide{
+        margin-top:15px;
+      }
+      .carousel-indicators{
+        margin-top:15px;
+      }
+      .m{
+        text-decoration: none;;
+      }
+#logoutBtn{
+    margin-left:280px;
+    text-decoration: none;
+
+}
+#sign{
+    color:#39FF14;
+    font-family:"Lobster";
+}
+.u{
+    text-decoration: none;
+}
+  </style>
+  
+  </head>
+  <body>
+    <!-- Navbar -->
+    
+    <nav>
+      <ul>
+        <li><img src="C:\Users\vardh\OneDrive\Desktop\recipe_frontend\asserts\logo.jpeg" class="food"></li>
+      <li><a  href="C:\Users\vardh\OneDrive\Desktop\home.html" id="home" class="m u">Home</a></li>
+      <li> <a href="#aboutsection" class="m u">About</a></li>
+      <li><a href="#wcuSection" class="m u">why choose us?</a></li>
+      <li><a href="C:\Users\vardh\OneDrive\Desktop\recipe\Frontend\HTML\recipe_display.html" class="m u">Recipes</a></li>
+     <li> <a href="C:\Users\vardh\OneDrive\Desktop\recipe\Frontend\HTML\upload.html" class="m u">Upload</a></li>
+     <li><a href="#followUsSection" class="m u">Follow us</a></li>
+     
+    
+      <li><div id="authContainer" >
+        <!-- This will be updated dynamically -->
+    </div></li>
+     
+      </ul>
+    
+</nav>
+    <!-- Carousel -->
+    <div class="k">
+    <h6 class="n">Explore and share your favorite recipes with a global community of food lovers.</h6>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      
+
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="C:\Users\vardh\OneDrive\Desktop\Project\frontend\Asserts\image4.jpg" class="d d-block w-100" alt="Recipe 1">
+        </div>
+        <div class="carousel-item">
+          <img src="C:\Users\vardh\OneDrive\Desktop\Project\frontend\Asserts\image3.jpg" class="d d-block w-100" alt="Recipe 2">
+        </div>
+        <div class="carousel-item">
+          <img src="C:\Users\vardh\OneDrive\Desktop\Project\frontend\Asserts\image2.jpg" class="d d-block w-100" alt="Recipe 3">
+        </div>
+      </div>
+      
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    
+    </div>
+    <div class="container1" id="aboutsection">
+      
+      <!-- Left Side - Image -->
+      <div class="image-container">
+          <img src="C:\Users\vardh\OneDrive\Desktop\recipe_frontend\asserts\recipe.png" alt="Delicious Food">
+      </div>
+
+      <!-- Right Side - About Content -->
+      <div class="content">
+          <h2>Welcome to Recipe Haven!</h2>
+          <p>
+              Discover and share amazing recipes from all over the world. Our platform allows food lovers to showcase their culinary skills, explore unique dishes, and connect with a passionate community of home cooks and professional chefs.
+          </p>
+          <p>
+              Whether you're looking for traditional recipes or innovative fusion dishes, Recipe Haven is the perfect place for you. Start sharing your delicious creations today!
+          </p>
+          
+      </div>
+  </div>
+ 
+  <div class="categories" id="categories">
+    <h2>Explore Categories</h2>
+    <div class="categories-grid">
+        
+            
+      
+        
+          
+        
+       
+           
+            <div class="category-card">
+                <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/em-mushroom-noodles-img.png">
+                <h3>Noodles</h3>
+                <p>Start your day with delightful recipes.</p>
+            </div>
+            <div class="category-card">
+                <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/em-gluten-img.png">
+                <h3>Salads</h3>
+                <p>Start your day with delightful recipes.</p>
+            </div>
+            <div class="category-card">
+                <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/em-ginger-fried-img.png">
+                <h3>Salads</h3>
+                <p>Start your day with delightful recipes.</p>
+            </div>
+            <div class="category-card">
+                <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/em-veg-starters-img.png">
+                <h3>Salads</h3>
+                <p>Start your day with delightful recipes.</p>
+            </div>
+            <div class="category-card">
+                <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/em-soup-img.png">
+                <h3>Salads</h3>
+                <p>Start your day with delightful recipes.</p>
+            </div>
+            <div class="category-card">
+                <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/em-grilled-seafood-img.png">
+                <h3>Salads</h3>
+                <p>Start your day with delightful recipes.</p>
+            </div>
+            
+        
+    </div>
+</div>
+<div class="wcu-section pt-5 pb-5" id="wcuSection">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="wcu-section-heading">Why Choose Us?</h1>
+              
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="wcu-card p-3 mb-3">
+                    <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/food-serve.png" class="wcu-card-image" />
+                    <h1 class="wcu-card-title mt-3">Expert Recipes</h1>
+                    <p class="wcu-card-description">
+                        Experience fine dining at the comfort of your home. All our
+                        orders are carefully packed and arranged to give you the nothing
+                        less than perfect.
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="wcu-card p-3 mb-3">
+                    <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/fruits-img.png" class="wcu-card-image" />
+                    <h1 class="wcu-card-title mt-3">Save Favorites</h1>
+                    <p class="wcu-card-description">
+                        The Fresh Food group provides fresh-cut fruits and vegetables
+                        directly picked from our partner farms and farm houses so that
+                        you always get them tree to plate.
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="wcu-card p-3 mb-3">
+                    <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/offers-img.png" class="wcu-card-image" />
+                    <h1 class="wcu-card-title mt-3">Quick & Easy</h1>
+                    <p class="wcu-card-description">
+                        sharing and discovering delicious dishes is fast and effortless!
+                         Upload your favorite recipes in just a few clicks and explore a world of simple, tasty meals.
+                          
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="follow-us-section pt-5 pb-5" id="followUsSection">
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <h1 class="follow-us-section-heading">Follow Us</h1>
+          </div>
+          <div class="col-12">
+              <div class="d-flex flex-row justify-content-center">
+                  <div class="follow-us-icon-container">
+                      <i class="fab fa-twitter icon"></i>
+                  </div>
+                  <div class="follow-us-icon-container">
+                      <i class="fab fa-instagram icon"></i>
+                  </div>
+                  <div class="follow-us-icon-container">
+                      <i class="fab fa-facebook icon"></i>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="footer-section pt-5 pb-5">
+  <div class="container">
+      <div class="row">
+          <div class="col-12 text-center">
+              <img src="C:\Users\vardh\OneDrive\Desktop\recipe_frontend\asserts\logo.jpeg" class="food-munch-logo" />
+              <h1 class="footer-section-mail-id">CodeChefs@Codechefs.com</h1>
+              <p class="footer-section-address">
+                  123 Ayur Vigyan Nagar, New Delhi, India.
+              </p>
+          </div>
+      </div>
+  </div>
+</div>
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2025 FlavourSync | All Rights Reserved</p>
+    </footer>
+
+    <!-- Bootstrap JS (Required for Carousel to work) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+    const authContainer = document.getElementById("authContainer"); // Select the container
+    const username = localStorage.getItem("username"); // Get username from localStorage
+
+    if (username) {
+        // User is logged in, show their username and Logout button
+        authContainer.innerHTML = `
+            <span id="sign">Welcome, ${username}</span>
+           <a id="logoutBtn" href="#">Logout</a>
+        `;
+
+        // Logout functionality
+        document.getElementById("logoutBtn").addEventListener("click", function () {
+            localStorage.clear(); // Clear all stored data
+            window.location.reload(); // Refresh page to update UI
+        });
+    } 
+
+
+    else {
+       // User is not logged in, show Sign Up button
+        authContainer.innerHTML = `<a href="register.html" >Sign Up</a>`;
+    }
+});
+
+    </script>
+  </body>
+</html>
