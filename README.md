@@ -6,7 +6,8 @@ Recipe Sharing is a platform for food lovers to share and explore recipes. It pr
 
 ## Recipe Collection  
 
-This folder contains a collection of recipes, making it easy to share and access different cooking ideas. Each recipe includes ingredients, step-by-step instructions, and helpful tips. Users can add the recipes which were cooked by them. This would generate more interactive and curious.  
+This folder contains a collection of recipes, making it easy to share and access different cooking ideas. Each recipe includes ingredients, step-by-step instructions, and helpful tips.
+Users can add the recipes which were cooked by them. This would generate more interactive and curious.  
 
 ![Alt Text](images/applayout.png)
 
@@ -25,7 +26,8 @@ This folder contains a collection of recipes, making it easy to share and access
 5. Try cooking and enjoy!  
 
 ![Alt Text](images/whyus.png)
-To sum up This is our Recipe Sharing Project under guidance of MR.SRINIVASU Sir (mentor).
+To sumup,
+This is our Recipe Sharing Project under guidance of MR.SRINIVASU Sir (mentor).
 
 Feel free to contribute by adding new recipes!
 
