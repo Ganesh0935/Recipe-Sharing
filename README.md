@@ -1,4 +1,4 @@
-# Recipe-Sharing
+# Recipe-Sharing project
 
 Recipe Sharing is a platform for food lovers to share and explore recipes. It provides an organized collection of recipes with easy-to-follow instructions. Users can contribute their own recipes, browse different categories, and try new dishes. Whether you're a beginner or an experienced cook, Recipe Sharing makes cooking fun and accessible for everyone.
 
